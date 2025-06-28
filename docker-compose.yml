@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: people
+      POSTGRES_PASSWORD: people@123
+      POSTGRES_DB: people
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: people_back
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: people
+      DATABASE_PASSWORD: people@123
+      DATABASE_NAME: people
+    command: npm run dev
+
+volumes:
+  postgres_data:
