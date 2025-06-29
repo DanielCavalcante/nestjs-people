@@ -10,7 +10,8 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET_KEY,
+      secret:
+        '0da245dbccd129c03e76304dd3b3d900a139895015dd0824feb2300031ae1804',
       signOptions: { expiresIn: '1h' },
     }),
   ],

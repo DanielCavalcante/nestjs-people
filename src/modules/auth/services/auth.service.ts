@@ -7,7 +7,6 @@ export class AuthService {
   constructor(private readonly jwtService: JwtService) {}
 
   login(dto: LoginDto) {
-    // Simulação de autenticação com e-mail e senha fixos
     if (dto.email !== 'admin@example.com' || dto.password !== 'password') {
       throw new UnauthorizedException('Credenciais inválidas');
     }

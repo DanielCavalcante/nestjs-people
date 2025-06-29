@@ -12,7 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'people',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true,
     }),
   ],
   exports: [TypeOrmModule],

@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './modules/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -16,10 +15,6 @@ import { JwtModule } from '@nestjs/jwt';
     DatabaseModule,
     UsersModule,
     AuthModule,
-    JwtModule.register({
-      secret: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: '1h' },
-    }),
   ],
   controllers: [AppController],
   providers: [AppService],
